@@ -1,0 +1,19 @@
+{
+  "products": [
+    { "id": 1, "name": "Laptop", "price": 999.99, "category": "Electronics", "inStock": true },
+    { "id": 2, "name": "Headphones", "price": 149.99, "category": "Electronics", "inStock": true },
+    { "id": 3, "name": "Desk Chair", "price": 299.99, "category": "Furniture", "inStock": false },
+    { "id": 4, "name": "Coffee Mug", "price": 12.99, "category": "Kitchen", "inStock": true },
+    { "id": 5, "name": "Notebook", "price": 5.99, "category": "Stationery", "inStock": true }
+  ],
+  "users": [
+    { "id": 1, "name": "Alice Johnson", "email": "alice@example.com", "role": "admin" },
+    { "id": 2, "name": "Bob Smith", "email": "bob@example.com", "role": "user" },
+    { "id": 3, "name": "Carol White", "email": "carol@example.com", "role": "user" }
+  ],
+  "orders": [
+    { "id": 1, "userId": 1, "productIds": [1, 2], "total": 1149.98, "status": "completed" },
+    { "id": 2, "userId": 2, "productIds": [4], "total": 12.99, "status": "pending" },
+    { "id": 3, "userId": 1, "productIds": [3], "total": 299.99, "status": "shipped" }
+  ]
+}
