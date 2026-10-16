@@ -1,15 +1,34 @@
-# Dummy API
+# Dummy API — Candidate Test
 
-A simple REST API for testing purposes. Built with Node.js and Express.
+This repo contains a simple REST API with dummy data. You will use this API to complete 5 issues. You do **not** need to modify the API code — just call it.
 
-## Setup
+## Quick Start
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/10vulture1005/dummy-api.git
+cd dummy-api
+
+# 2. Install dependencies
 npm install
+
+# 3. Start the server
 npm start
 ```
 
-Server runs on `http://localhost:3000`
+The API is now running at `http://localhost:3000`
+
+## Data
+
+All data lives in `data.json`. It contains 3 collections:
+
+| Collection | Count | Fields |
+|------------|-------|--------|
+| **products** | 5 items | id, name, price, category, inStock |
+| **users** | 3 items | id, name, email, role |
+| **orders** | 3 items | id, userId, productIds, total, status |
+
+Read `data.json` to understand the current state before making any API calls.
 
 ## API Endpoints
 
@@ -40,6 +59,53 @@ Server runs on `http://localhost:3000`
 | PUT | `/api/orders/:id` | Update an order |
 | DELETE | `/api/orders/:id` | Delete an order |
 
-## Data
+## How to Call the API
 
-All data is stored in `data.json`. The API reads from and writes to this file on every mutation.
+You can use `curl`, Postman, or any HTTP client. Examples with `curl`:
+
+### GET all products
+```bash
+curl http://localhost:3000/api/products
+```
+
+### GET a single product
+```bash
+curl http://localhost:3000/api/products/1
+```
+
+### POST create a product
+```bash
+curl -X POST http://localhost:3000/api/products \
+  -H 'Content-Type: application/json' \
+  -d '{"name": "Keyboard", "price": 49.99, "category": "Electronics", "inStock": true}'
+```
+
+### PUT update a product
+```bash
+curl -X PUT http://localhost:3000/api/products/1 \
+  -H 'Content-Type: application/json' \
+  -d '{"price": 899.99}'
+```
+
+### DELETE a product
+```bash
+curl -X DELETE http://localhost:3000/api/products/1
+```
+
+## Your Tasks
+
+There are **5 open issues** in this repo. Each one requires you to:
+
+1. Read `data.json` to understand the data
+2. Build the appropriate JSON payload
+3. Call the API endpoint(s) to make the change
+4. Verify the change was applied
+
+Run `gh issue list --repo 10vulture1005/dummy-api` to see all issues.
+
+## Tips
+
+- Always set `Content-Type: application/json` header for POST and PUT requests
+- The API reads from and writes to `data.json` on every mutation — you can check the file to verify changes
+- IDs are auto-incremented on creation
+- If you get a 404, check that the ID exists in `data.json`
