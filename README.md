@@ -66,19 +66,26 @@ You can use **any language or tool** — JavaScript (Node.js), Python, curl, Pos
 ### JavaScript (Node.js) example
 
 ```javascript
-const fetch = require('node-fetch');
-
-// GET all products
+// GET example
 const res = await fetch('http://localhost:3000/api/products');
-const products = await res.json();
-console.log(products);
+const data = await res.json();
 
-// POST create a product
+// POST example
 await fetch('http://localhost:3000/api/products', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ name: 'Keyboard', price: 49.99, category: 'Electronics', inStock: true })
+  body: JSON.stringify({ /* your payload */ })
 });
+
+// PUT example
+await fetch('http://localhost:3000/api/products/1', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ /* your payload */ })
+});
+
+// DELETE example
+await fetch('http://localhost:3000/api/products/1', { method: 'DELETE' });
 ```
 
 ### Python example
@@ -86,18 +93,18 @@ await fetch('http://localhost:3000/api/products', {
 ```python
 import requests
 
-# GET all products
+# GET example
 res = requests.get('http://localhost:3000/api/products')
-products = res.json()
-print(products)
+data = res.json()
 
-# POST create a product
-requests.post('http://localhost:3000/api/products', json={
-    'name': 'Keyboard',
-    'price': 49.99,
-    'category': 'Electronics',
-    'inStock': True
-})
+# POST example
+requests.post('http://localhost:3000/api/products', json={ /* your payload */ })
+
+# PUT example
+requests.put('http://localhost:3000/api/products/1', json={ /* your payload */ })
+
+# DELETE example
+requests.delete('http://localhost:3000/api/products/1')
 ```
 
 ### curl examples:
