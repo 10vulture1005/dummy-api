@@ -61,7 +61,46 @@ Read `data.json` to understand the current state before making any API calls.
 
 ## How to Call the API
 
-You can use `curl`, Postman, or any HTTP client. Examples with `curl`:
+You can use **any language or tool** — JavaScript (Node.js), Python, curl, Postman, etc. The API is a standard REST API that accepts HTTP requests with JSON bodies.
+
+### JavaScript (Node.js) example
+
+```javascript
+const fetch = require('node-fetch');
+
+// GET all products
+const res = await fetch('http://localhost:3000/api/products');
+const products = await res.json();
+console.log(products);
+
+// POST create a product
+await fetch('http://localhost:3000/api/products', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'Keyboard', price: 49.99, category: 'Electronics', inStock: true })
+});
+```
+
+### Python example
+
+```python
+import requests
+
+# GET all products
+res = requests.get('http://localhost:3000/api/products')
+products = res.json()
+print(products)
+
+# POST create a product
+requests.post('http://localhost:3000/api/products', json={
+    'name': 'Keyboard',
+    'price': 49.99,
+    'category': 'Electronics',
+    'inStock': True
+})
+```
+
+### curl examples:
 
 ### GET all products
 ```bash
